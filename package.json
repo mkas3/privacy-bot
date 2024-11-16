@@ -2,7 +2,10 @@
   "name": "mkas3-bot",
   "version": "0.0.1",
   "description": "The repository for the mkas3 bot",
-  "author": "mkas3",
+  "author": {
+    "name": "mkas3 📛",
+    "url": "https://github.com/mkas3"
+  },
   "private": true,
   "license": "MIT",
   "packageManager": "bun@1.1.33",
@@ -18,9 +21,11 @@
   },
   "homepage": "https://github.com/mkas3/mkas3-bot",
   "scripts": {
-    "build": "tsup",
+    "prebuild": "bun lint && bun typecheck",
+    "build": "shx rm -rf ./dist && tsup",
     "dev": "bun run --watch ./src/main.ts",
-    "start": "bun run ./dist/main.js",
+    "start": "bun run ./dist/main.mjs",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint --config eslint.config.mts --flag unstable_ts_config",
     "prepare": "simple-git-hooks && bunx git-conventional-commits init",
     "lint-staged": "lint-staged"
@@ -38,7 +43,9 @@
     "@types/node": "^22.9.0",
     "jiti": "^2.4.0",
     "lint-staged": "^15.2.10",
+    "shx": "^0.3.4",
     "simple-git-hooks": "^2.11.1",
+    "terser": "^5.36.0",
     "typescript": "^5.6.3"
   },
   "simple-git-hooks": {

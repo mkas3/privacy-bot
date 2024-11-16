@@ -28,7 +28,7 @@ export const setupCommands = async (bot: Bot) => {
         command: key
       }))
     );
-  } catch (e) {
+  } catch {
     logger.error('Error setup commands description');
   }
 
