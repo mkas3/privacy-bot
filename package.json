@@ -1,0 +1,48 @@
+{
+  "name": "mkas3-bot",
+  "version": "0.0.1",
+  "description": "The repository for the mkas3 bot",
+  "author": "mkas3",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "bun@1.1.33",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/mkas3/mkas3-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkas3/mkas3-bot"
+  },
+  "homepage": "https://github.com/mkas3/mkas3-bot",
+  "scripts": {
+    "build": "tsup",
+    "dev": "bun run --watch ./src/main.ts",
+    "start": "bun run ./dist/main.js",
+    "lint": "eslint --config eslint.config.mts --flag unstable_ts_config",
+    "prepare": "simple-git-hooks && bunx git-conventional-commits init",
+    "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "grammy": "^1.31.3",
+    "pino": "^9.5.0",
+    "pino-pretty": "^13.0.0",
+    "tsup": "^8.3.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@mkas3/eslint": "^3.6.3",
+    "@types/bun": "^1.1.13",
+    "@types/node": "^22.9.0",
+    "jiti": "^2.4.0",
+    "lint-staged": "^15.2.10",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.6.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bun run lint-staged",
+    "preserveUnused": true
+  }
+}
